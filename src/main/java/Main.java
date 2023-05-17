@@ -29,24 +29,39 @@ public class Main {
 
 
 
-        String guessWord = word.getWord();
+
 
         ArrayList<Character> charactersArrayList = new ArrayList<>();
+
+
+        String guessWord = word.getWord();
         for (int i = 0; i < guessWord.length(); i++) {
             charactersArrayList.add(guessWord.charAt(i));
         }
 
         System.out.println(charactersArrayList);
 
+        word.transformedWord();
+
+
+        while (results.getRemainingLives() > 0) { ////////////here is my while loop
+           String input = myInput.nextLine();
+
+            if(input.equals()) {
+
+                boolean found = false;
+                for (char character : charactersArrayList) {
+                    if (character.equals(input)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+            }
 
 
 
-
-        while (results.getRemainingLives() > 0) {
-            String input =myInput.nextLine();
-
-
-            System.out.println(word.transformedWord());
+            System.out.println(word.getSymbolsArrayList());
             results.takeawayLives();
             System.out.println("remaining lives: " + results.getRemainingLives());
         }
