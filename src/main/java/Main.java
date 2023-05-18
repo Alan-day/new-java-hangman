@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import java.util.Scanner;
 public class Main {
 
@@ -22,7 +23,7 @@ public class Main {
 
 
 
-       // results.getRemainingLives() != 0
+
         results.getRemainingLives();
         Scanner myInput = new Scanner(System.in);
 
@@ -35,27 +36,26 @@ public class Main {
 
 
         String guessWord = word.getWord();
+
         for (int i = 0; i < guessWord.length(); i++) {
             charactersArrayList.add(guessWord.charAt(i));
         }
 
         System.out.println(charactersArrayList);
 
-        word.transformedWord();
+        word.transformedWord(guessWord);
 
 
         while (results.getRemainingLives() > 0) { ////////////here is my while loop
            String input = myInput.nextLine();
 
-            if(input.equals()) {
+           String userCharacter = input;
 
-                boolean found = false;
-                for (char character : charactersArrayList) {
-                    if (character.equals(input)) {
-                        found = true;
-                        break;
-                    }
-                }
+            if(userCharacter.equals(charactersArrayList)) {
+
+
+
+
 
             }
 

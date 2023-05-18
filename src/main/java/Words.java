@@ -7,28 +7,31 @@ public class Words {
 
 
 
-    Random random = new Random();
-    public String [] words = {"ELEPHANT", "PIGEON", "TIGER", "BEAR"};
-    int index = random.nextInt(words.length);
+   static  Random random = new Random();
+    public static String [] words = {"ELEPHANT", "PIGEON", "TIGER", "BEAR"};
+    static int  index = random.nextInt(words.length);
 
     public ArrayList<String> getSymbolsArrayList() {
         return symbolsArrayList;
     }
 
-    ArrayList<String> symbolsArrayList = new ArrayList<>();
+    public static ArrayList<String> symbolsArrayList = new ArrayList<>();
 
-    public String getWord(){
+    public static String getWord(){
         return words[index];
 
     }
 
+//public static ArrayList changeTransformedWord(char guessChar) {
+//        for ()
+//
+//}
 
 
 
+    public static ArrayList transformedWord(String word){
 
-    public ArrayList transformedWord(){
-        String newWord = getWord();
-        for(int i=0; i<newWord.length(); i++){
+        for(int i=0; i<word.length(); i++){
             symbolsArrayList.add("_");
 
         }
