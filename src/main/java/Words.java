@@ -22,10 +22,7 @@ public class Words {
 
     }
 
-//public static ArrayList changeTransformedWord(char guessChar) {
-//        for ()
-//
-//}
+
 
 
 

@@ -5,7 +5,15 @@ import java.util.Scanner;
 public class Main {
 
 
-
+//    public static ArrayList changeTransformedWord(String guessChar, ArrayList transformedWord) {
+//        for (int i=0; i<transformedWord.length(); i++ ){
+//            if(transformedWord == guessChar){
+//                transformedWord.set(i, guessChar);
+//
+//            }
+//        }
+//
+//    }
 
 
 
@@ -32,44 +40,57 @@ public class Main {
 
 
 
-        ArrayList<Character> charactersArrayList = new ArrayList<>();
+        ArrayList <Character> charactersArrayList = new ArrayList<>();
 
 
-        String guessWord = word.getWord();
-
-        for (int i = 0; i < guessWord.length(); i++) {
-            charactersArrayList.add(guessWord.charAt(i));
+        String guessThisWord = word.getWord();
+        ArrayList secretArray = word.getSymbolsArrayList();
+        for (int i = 0; i < guessThisWord.length(); i++) {
+            charactersArrayList.add(guessThisWord.charAt(i));
         }
 
-        System.out.println(charactersArrayList);
+        System.out.println(charactersArrayList); // array of letters
 
-        word.transformedWord(guessWord);
-
-
-        while (results.getRemainingLives() > 0) { ////////////here is my while loop
-           String input = myInput.nextLine();
-
-           String userCharacter = input;
-
-            if(userCharacter.equals(charactersArrayList)) {
+        word.transformedWord(guessThisWord);
 
 
+        while (results.getRemainingLives() > 0 || !secretArray.contains("_")) { ////////////here is my while loop
+           String userCharacter = myInput.next();
 
+           char cleanInput = userCharacter.charAt(0);
+
+            System.out.println(cleanInput);
+
+            if(charactersArrayList.contains(cleanInput)) {
+                int index = charactersArrayList.indexOf(cleanInput);
+                secretArray.set(index, cleanInput);
+
+                System.out.println(secretArray);
+
+                System.out.println("remaining lives: " + results.getRemainingLives());
+
+            } else {
+
+                System.out.println("not ok");
+                System.out.println(secretArray);
+                results.takeawayLives();
+                System.out.println("remaining lives: " + results.getRemainingLives());
+                }
 
 
             }
 
 
 
-            System.out.println(word.getSymbolsArrayList());
-            results.takeawayLives();
-            System.out.println("remaining lives: " + results.getRemainingLives());
+
+             // transformed array of letters
+
+
         }
 
 
 
-        System.out.println(word.getWord());
-        System.out.println(results.transformedResults());
+
     }
 
 
@@ -89,4 +110,4 @@ public class Main {
     // 	boolean find(userInput)
     //  class random wordSelect
     //  index[Random]
-}
+
