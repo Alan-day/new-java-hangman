@@ -54,7 +54,8 @@ public class Main {
         word.transformedWord(guessThisWord);
 
 
-        while (results.getRemainingLives() > 0 || !secretArray.contains("_")) { ////////////here is my while loop
+        while (results.getRemainingLives() >0  && !secretArray.equals(charactersArrayList)) { ////////////here is my while loop
+
            String userCharacter = myInput.next();
 
            char cleanInput = userCharacter.charAt(0);
@@ -62,10 +63,14 @@ public class Main {
             System.out.println(cleanInput);
 
             if(charactersArrayList.contains(cleanInput)) {
+
+
+
                 int index = charactersArrayList.indexOf(cleanInput);
                 secretArray.set(index, cleanInput);
 
                 System.out.println(secretArray);
+                System.out.println(charactersArrayList);
 
                 System.out.println("remaining lives: " + results.getRemainingLives());
 
