@@ -10,7 +10,9 @@ public class Main {
     public static void main(String[] args) {
 
 
-
+        System.out.println(
+                "Welcome to a game of hangman. You have 8 chances to guess a word from the category of zoology. Good luck!"
+        );
 
         Words word = new Words();
 
@@ -36,10 +38,10 @@ public class Main {
             charactersArrayList.add(guessThisWord.charAt(i));
         }
 
-        System.out.println(charactersArrayList); // array of letters
+
 
         word.transformedWord(guessThisWord);
-
+        System.out.println(secretArray);
 
         while (results.getRemainingLives() > 0  && !secretArray.equals(charactersArrayList)) { ////////////here is my while loop
 
