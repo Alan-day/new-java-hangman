@@ -38,13 +38,12 @@ public class Main {
 
 
 
-
-
         ArrayList <Character> charactersArrayList = new ArrayList<>();
 
 
         String guessThisWord = word.getWord();
         ArrayList secretArray = word.getSymbolsArrayList();
+
         for (int i = 0; i < guessThisWord.length(); i++) {
             charactersArrayList.add(guessThisWord.charAt(i));
         }
@@ -54,29 +53,25 @@ public class Main {
         word.transformedWord(guessThisWord);
 
 
-        while (results.getRemainingLives() >0  && !secretArray.equals(charactersArrayList)) { ////////////here is my while loop
+        while (results.getRemainingLives() > 0  && !secretArray.equals(charactersArrayList)) { ////////////here is my while loop
 
            String userCharacter = myInput.next();
 
            char cleanInput = userCharacter.charAt(0);
 
-            System.out.println(cleanInput);
+
 
             if(charactersArrayList.contains(cleanInput)) {
 
-
-
-                int index = charactersArrayList.indexOf(cleanInput);
-                secretArray.set(index, cleanInput);
-
+                for (int i = 0; i < charactersArrayList.size(); i++) {
+                    if (charactersArrayList.get(i).equals(cleanInput)) {
+                        secretArray.set(i, cleanInput);
+                    } else {}}
                 System.out.println(secretArray);
-                System.out.println(charactersArrayList);
-
                 System.out.println("remaining lives: " + results.getRemainingLives());
 
             } else {
-
-                System.out.println("not ok");
+                System.out.println("Wrong guess!");
                 System.out.println(secretArray);
                 results.takeawayLives();
                 System.out.println("remaining lives: " + results.getRemainingLives());
