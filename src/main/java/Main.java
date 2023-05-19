@@ -8,17 +8,13 @@ public class Main {
 
 
     public static void main(String[] args) {
+
+        DisplayGraphicResults hangmanResults = new DisplayGraphicResults();
         ArrayList <Character> charactersArrayList = new ArrayList<>();
 
         System.out.println(
                 "Welcome to a game of hangman. You have 8 chances to guess a word from the category of zoology. Good luck!" );
-        System.out.println(" ________");
-        System.out.println(" |      |");
-        System.out.println(" |      O");
-        System.out.println(" |     /|\\");
-        System.out.println(" |     / \\");
-        System.out.println(" |");
-        System.out.println("_|_________");
+
 
 
         Words word = new Words();
@@ -30,9 +26,6 @@ public class Main {
 
 
         results.getRemainingLives();
-
-        Scanner myInput = new Scanner(System.in);
-
 
         UserInput myNewInput = new UserInput();
 
@@ -50,20 +43,20 @@ public class Main {
         word.transformedWord(guessThisWord);
         System.out.println(secretArray);
 
-        while (results.getRemainingLives() > 0  && !secretArray.equals(charactersArrayList)) { ////////////here is my while loop
+        while (results.getRemainingLives() > 0  && !secretArray.equals(charactersArrayList)) {
             System.out.println("Please enter a character");
 
-            String userCharacter = myNewInput.getMyInput();
+            String userString = myNewInput.getMyInput();
 
-           char cleanInput = userCharacter.toUpperCase().charAt(0);
+           char userCharacter = userString.toUpperCase().charAt(0);
 
 
 
-            if(charactersArrayList.contains(cleanInput)) {
+            if(charactersArrayList.contains(userCharacter)) {
 
                 for (int i = 0; i < charactersArrayList.size(); i++) {
-                    if (charactersArrayList.get(i).equals(cleanInput)) {
-                        secretArray.set(i, cleanInput);
+                    if (charactersArrayList.get(i).equals(userCharacter)) {
+                        secretArray.set(i, userCharacter);
                     }
                 }
 
@@ -76,16 +69,25 @@ public class Main {
                 System.out.println("Wrong guess!");
                 System.out.println(secretArray);
                 results.takeawayLives();
+                hangmanResults.takeawayLives();
                 System.out.println("remaining lives: " + results.getRemainingLives());
+
+                System.out.println(hangmanResults.getRemainingLives());
+
                 }
 
             if (secretArray.equals(charactersArrayList)) {
 
                 System.out.println("Congratulations, you win!");
+                System.out.println("The secret word was:");
+                System.out.println(charactersArrayList);
+
+
             } else if (!secretArray.equals(charactersArrayList) && results.getRemainingLives() == 0) {
                 System.out.println("Better luck next time");
                 System.out.println("The secret word was:");
                 System.out.println(charactersArrayList); // change to String
+
             }
 
         }
