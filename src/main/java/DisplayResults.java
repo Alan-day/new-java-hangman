@@ -2,6 +2,10 @@ import java.util.ArrayList;
 
 public class DisplayResults {
 
+    public DisplayResults() {
+
+        this.remainingLives = 8;
+    }
     private String results;
     String [] correctGuesses;
 
@@ -27,20 +31,18 @@ public class DisplayResults {
 
 
     public int getRemainingLives() {
+
         return remainingLives;
     }
     public void setRemainingLives() {
         this.remainingLives = remainingLives;
-    }
+    } //unused setter
 
     public void takeawayLives(){
         remainingLives -= 1;
     }
 
-    public DisplayResults(String results) {
-        this.results = results;
-        this.remainingLives = 8;
-    }
+
 
 
 

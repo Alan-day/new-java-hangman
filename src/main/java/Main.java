@@ -8,27 +8,34 @@ public class Main {
 
 
     public static void main(String[] args) {
-
+        ArrayList <Character> charactersArrayList = new ArrayList<>();
 
         System.out.println(
-                "Welcome to a game of hangman. You have 8 chances to guess a word from the category of zoology. Good luck!"
-        );
+                "Welcome to a game of hangman. You have 8 chances to guess a word from the category of zoology. Good luck!" );
+        System.out.println(" ________");
+        System.out.println(" |      |");
+        System.out.println(" |      O");
+        System.out.println(" |     /|\\");
+        System.out.println(" |     / \\");
+        System.out.println(" |");
+        System.out.println("_|_________");
+
 
         Words word = new Words();
 
-        DisplayResults results = new DisplayResults("Word");
+        DisplayResults results = new DisplayResults();
 
 
 
 
 
         results.getRemainingLives();
+
         Scanner myInput = new Scanner(System.in);
 
 
+        UserInput myNewInput = new UserInput();
 
-
-        ArrayList <Character> charactersArrayList = new ArrayList<>();
 
 
         String guessThisWord = word.getWord();
@@ -44,16 +51,9 @@ public class Main {
         System.out.println(secretArray);
 
         while (results.getRemainingLives() > 0  && !secretArray.equals(charactersArrayList)) { ////////////here is my while loop
-
             System.out.println("Please enter a character");
 
-
-
-
-
-
-
-           String userCharacter = myInput.next();
+            String userCharacter = myNewInput.getMyInput();
 
            char cleanInput = userCharacter.toUpperCase().charAt(0);
 
@@ -64,15 +64,13 @@ public class Main {
                 for (int i = 0; i < charactersArrayList.size(); i++) {
                     if (charactersArrayList.get(i).equals(cleanInput)) {
                         secretArray.set(i, cleanInput);
-                    } else {}}
+                    }
+                }
 
                 System.out.println(secretArray);
                 System.out.println("remaining lives: " + results.getRemainingLives());
 
             }
-
-
-
 
             else {
                 System.out.println("Wrong guess!");
@@ -94,32 +92,10 @@ public class Main {
 
 
 
-
-             // transformed array of letters
-
-
         }
-
-
 
 
     }
 
 
-
-
-
-    //while loop (while lives != 0)
-    // input always in uppercase ( toUpper() )
-    // import java.util.Scanner;
-    // Scanner myObj = new Scanner(System.in)
-    // userInput = myObj.nextLine();
-    // class DisplayResults
-    // class storeUserInput
-    // class Game (Main)
-    // class random word selection
-    // transform word to underscore
-    // 	boolean find(userInput)
-    //  class random wordSelect
-    //  index[Random]
 
