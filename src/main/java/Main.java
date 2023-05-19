@@ -5,18 +5,6 @@ import java.util.Scanner;
 public class Main {
 
 
-//    public static ArrayList changeTransformedWord(String guessChar, ArrayList transformedWord) {
-//        for (int i=0; i<transformedWord.length(); i++ ){
-//            if(transformedWord == guessChar){
-//                transformedWord.set(i, guessChar);
-//
-//            }
-//        }
-//
-//    }
-
-
-
 
 
     public static void main(String[] args) {
@@ -24,8 +12,8 @@ public class Main {
 
 
 
-
         Words word = new Words();
+
         DisplayResults results = new DisplayResults("Word");
 
 
@@ -55,9 +43,17 @@ public class Main {
 
         while (results.getRemainingLives() > 0  && !secretArray.equals(charactersArrayList)) { ////////////here is my while loop
 
+            System.out.println("Please enter a character");
+
+
+
+
+
+
+
            String userCharacter = myInput.next();
 
-           char cleanInput = userCharacter.charAt(0);
+           char cleanInput = userCharacter.toUpperCase().charAt(0);
 
 
 
@@ -67,18 +63,32 @@ public class Main {
                     if (charactersArrayList.get(i).equals(cleanInput)) {
                         secretArray.set(i, cleanInput);
                     } else {}}
+
                 System.out.println(secretArray);
                 System.out.println("remaining lives: " + results.getRemainingLives());
 
-            } else {
+            }
+
+
+
+
+            else {
                 System.out.println("Wrong guess!");
                 System.out.println(secretArray);
                 results.takeawayLives();
                 System.out.println("remaining lives: " + results.getRemainingLives());
                 }
 
+            if (secretArray.equals(charactersArrayList)) {
 
+                System.out.println("Congratulations, you win!");
+            } else if (!secretArray.equals(charactersArrayList) && results.getRemainingLives() == 0) {
+                System.out.println("Better luck next time");
+                System.out.println("The secret word was:");
+                System.out.println(charactersArrayList); // change to String
             }
+
+        }
 
 
 
